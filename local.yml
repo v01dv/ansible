@@ -1,0 +1,13 @@
+- hosts: localhost
+  pre_tasks:
+    - name: Full system upgrade
+      become: yes
+      pacman:
+        update_cache: yes
+        upgrade: yes
+        state: present
+      tags:
+        - install
+        - coretasks
+  tasks:  
+    - include_tasks: tasks/test.yml     

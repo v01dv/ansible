@@ -1,0 +1,5 @@
+- name: Install ssh 
+  shell: "echo test"
+  tags:
+    - install
+    - ssh
