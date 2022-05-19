@@ -8,6 +8,7 @@
         state: present
       tags:
         - install
-        - coretasks
+        - core
   tasks:  
     - include_tasks: tasks/test.yml     
+    - include_tasks: tasks/dotfiles.yml
