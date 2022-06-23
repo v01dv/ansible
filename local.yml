@@ -10,5 +10,8 @@
         - install
         - core
   tasks:  
-    - include_tasks: tasks/test.yml     
-    - include_tasks: tasks/dotfiles.yml
+    - include: tasks/core-setup.yml
+    - include: tasks/dotfiles.yml
+    - include: tasks/productivity-tools.yml
+    - include: tasks/postinstall-setup.yml
+

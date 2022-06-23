@@ -1,0 +1,8 @@
+- name: Allow members of group wheel to execute any command
+  lineinfile:
+    dest: /etc/sudoers
+    line: "%wheel ALL=(ALL) ALL"
+    regexp: "^#%wheel ALL=(ALL) ALL$"
+    state: present
+  tags:
+    - postinstall
