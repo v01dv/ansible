@@ -1,0 +1,9 @@
+- name: Install nvidia video card driver
+  become: true
+  pacman:
+    name: ["dkms", "linux-headers", "nvidia-390xx-dkms", "nvidia-390xx-utils", "nvidia-390xx-settings"]
+  tags:
+    - install
+    - core
+    - nvidia
+

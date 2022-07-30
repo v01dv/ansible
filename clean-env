@@ -7,9 +7,9 @@ rm /usr/local/bin/n
 rm /usr/local/bin/node
 
 # Undo zsh
-uninstall_oh_my_zsh
+#uninstall_oh_my_zsh
 chsh /bin/bash
-sudo apt purge zsh
+pacman -Rns zsh
 
 # Undo Slack
 sudo apt purge slack-desktop

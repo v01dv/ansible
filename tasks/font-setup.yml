@@ -1,0 +1,9 @@
+- name: Install fonts, papirus-icon-theme and arc-gtk-theme 
+  become: true
+  apt:
+    name: ["arc-gtk-theme", "papirus-icon-theme", "ttf-jetbrains-mono", "ttf-hack", "ttf-joypixels", "noto-fonts-emoji"]
+  tags:
+    - install
+    - core
+    - fonts
+

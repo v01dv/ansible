@@ -1,27 +1,25 @@
-- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
+- name: Install packages 1
   become: true
-  apt_repository:
-   repo: ppa:kdenlive/kdenlive-stable
-   state: present
-   update_cache: True
+  pacman:
+    name: [ "maim", "tmux", "fzf", "xclip", "tldr", "ripgrep", "fd", "git"]
+  tags:
+    - install
+    - productivity
+    - nvim
+
+- name: Install packages 2
+  become: true
+  pacman:
+    name: [ "zathura", "zathura-pdf-mupdf", "pastel", "xcolor", "yt-dlp", "youtube-dl"]
   tags:
     - install
     - productivity
 
-- name: shutter ppa (ppa:linuxuprising/shutter)
-  become: true
-  apt_repository:
-   repo: ppa:linuxuprising/shutter
-   state: present
-   update_cache: True
-  tags:
-    - install
-    - productivity
 
-- name: Install packages
+- name: Install packages 3
   become: true
-  apt:
-    name: [ "tmux", "wireshark", "fzf", "kdenlive", "gimp", "xclip", "screenkey", "tldr", "ripgrep", "shutter" ]
+  pacman:
+    name: ["alacritty", "vifm", "sxiv", "pcmanfm-gtk3", "obsidian", "mpv", "firefox", "cmatrix"]
   tags:
     - install
     - productivity

@@ -1,3 +1,16 @@
+- name: Create new user
+  tags:
+    - postinstall
+  user: 
+    name: user1
+    groups: wheel
+    password: "{{ 'password' | password_hash('sha512', 'mysecretsalt') }}"
+    state: "present"
+    shell: "/bin/bash"
+    system: false
+    createhome: true
+    home: "/home/user1"
+
 - name: Allow members of group wheel to execute any command
   lineinfile:
     dest: /etc/sudoers

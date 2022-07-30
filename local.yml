@@ -1,17 +1,45 @@
-- hosts: localhost
+# tasks to complete before running roles
+- hosts: all
+  tags: always
+  become: true
   pre_tasks:
-    - name: Full system upgrade
-      become: yes
+    - name: pre-run | full system upgrade (arch)
+      become: true
       pacman:
         update_cache: yes
         upgrade: yes
         state: present
+      changed_when: false
+      when: ansible_distribution == "Archlinux"
       tags:
+        - always
         - install
         - core
-  tasks:  
-    - include: tasks/core-setup.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/productivity-tools.yml
-    - include: tasks/postinstall-setup.yml
 
+    - name: pre-run | update package cache (debian, etc)
+      tags: always
+      apt: update_cache=yes
+      changed_when: false
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
+# run roles
+- hosts: all
+  tags: base
+  become: true
+  roles:
+    - base
+
+  # tasks:  
+  #   - include: tasks/ssh.yml
+  #   - include: tasks/git-setup.yml    
+  #   - include: tasks/core-setup.yml
+  #   - include: tasks/dotfiles.yml
+  #   - include: tasks/productivity-tools.yml
+  #   - include: tasks/postinstall-setup.yml
+  #   - include: tasks/nvidia-setup.yml
+  #   - include: tasks/node-setup.yml
+  #   - include: tasks/npm-packages.yml
+  #   - include: tasks/zsh-setup.yml
+  #   - include: tasks/personal-projects.yml
+  #   - include: tasks/nvim-setup.yml
+  #   - include: tasks/debugger.yml

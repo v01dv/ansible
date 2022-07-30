@@ -1,0 +1,10 @@
+- name: Install nvim 
+  become: true
+  pacman:
+    name: [ "eslint_d", "neovim" ]
+  tags:
+    - install
+    - productivity
+    - nvim
+
+
