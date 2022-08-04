@@ -1,0 +1,25 @@
+- name: users | voldv | create group
+  tags: groups,voldv,users
+  group:
+    name: voldv 
+    state: present
+
+- name: users | voldv | create user
+  tags: voldv,sudo,users
+  user:
+    name: voldv
+    group: jay
+    groups: {{ sudo_group }}
+    state: present
+    #comment: "Jay Bkack"
+    password: "{{ voldv_passwd }}"
+    shell: /bin/bash
+
+- name: users | voldv | add sudoers file
+  tags: voldv,settings,sudo,system,users
+  copy:
+    src: users/sudoers_voldv
+    dest: /etc/sudoers.d/voldv
+    owner: root
+    group: root
+    mode: 0440
