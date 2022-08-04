@@ -1,4 +1,6 @@
 - block:
-
+  # Make sure users exist on the system
+  - import_tasks: users/voldv.yml
+ 
   # Set up the ansible environment
   - import_tasks: ansible_setup.yml
