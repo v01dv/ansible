@@ -8,7 +8,7 @@
   tags: voldv,sudo,users
   user:
     name: voldv
-    group: jay
+    group: voldv
     groups: "{{ sudo_group }}"
     state: present
     #comment: "Jay Bkack"
