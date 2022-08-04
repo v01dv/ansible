@@ -9,7 +9,7 @@
   user:
     name: voldv
     group: jay
-    groups: {{ sudo_group }}
+    groups: "{{ sudo_group }}"
     state: present
     #comment: "Jay Bkack"
     password: "{{ voldv_passwd }}"
