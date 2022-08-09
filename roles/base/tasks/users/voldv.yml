@@ -23,3 +23,22 @@
     owner: root
     group: root
     mode: 0440
+
+- name: users | voldv | create .ssh directory
+  tags: dotfiles,voldv,ssh,users
+  file:
+    path: "{{ item.dir }}"
+    state: directory
+    owner: voldv
+    group: voldv
+    mode: 0700
+  with_items:
+    - { dir: '/home/voldv/.ssh' }
+
+- name: users | voldv | add public key
+  tags: dotfiles,voldv,ssh,ssh-keys,users
+  authorized_key:
+    user: voldv
+    key: "{{ item }}"
+  with_file:
+    - users/voldv/ssh/id_ed25519_github.pub
