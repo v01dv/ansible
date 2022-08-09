@@ -35,6 +35,14 @@
   with_items:
     - { dir: '/home/voldv/.ssh' }
 
+- name: Install ssh key
+  copy:
+    src: "{{ item }}"
+    dest: /home/voldv/.ssh
+    mode: 0600
+  with_fileglob:
+    - "/users/voldv/ssh/*"
+
 - name: users | voldv | add public key
   tags: dotfiles,voldv,ssh,ssh-keys,users
   authorized_key:
