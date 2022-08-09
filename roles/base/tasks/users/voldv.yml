@@ -41,7 +41,7 @@
     dest: /home/voldv/.ssh
     mode: 0600
   with_fileglob:
-    - "/users/voldv/ssh/*"
+    - "/roles/base/files/users/voldv/ssh/*"
 
 - name: users | voldv | add public key
   tags: dotfiles,voldv,ssh,ssh-keys,users
