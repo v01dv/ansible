@@ -35,18 +35,40 @@
   with_items:
     - { dir: '/home/voldv/.ssh' }
 
-- name: Install ssh key
+- name : users | voldv | find all ssh private keys
+  tags: dotfiles,voldv,ssh,ssh-keys,users
+  find:
+    paths: "{{ role_path }}/files/users/voldv/ssh"
+    file_type: file
+    patterns:  '^id_[^.]*$'
+    use_regex: yes
+  register: output
+- debug:
+    var: output.files
+
+- name: users | voldv | copy private keys
+  tags: dotfiles,voldv,ssh,ssh-keys,users
+  copy:
+    src: "{{ item.path }}"
+    dest: /home/voldv/.ssh
+    owner: voldv
+    group: voldv
+    mode: 0600
+  with_items: "{{ output.files }}"
+
+- name: users | voldv | copy public keys
+  tags: dotfiles,voldv,ssh,ssh-keys,users
   copy:
     src: "{{ item }}"
     dest: /home/voldv/.ssh
     mode: 0600
   with_fileglob:
-    - "/roles/base/files/users/voldv/ssh/*"
+    - "{{ role_path }}/files/users/voldv/ssh/*.pub"
 
-- name: users | voldv | add public key
-  tags: dotfiles,voldv,ssh,ssh-keys,users
-  authorized_key:
-    user: voldv
-    key: "{{ item }}"
-  with_file:
-    - users/voldv/ssh/id_ed25519_github.pub
+# - name: users | voldv | add public key
+#   tags: dotfiles,voldv,ssh,ssh-keys,users
+#   authorized_key:
+#     user: voldv
+#     key: "{{ item }}"
+#   with_file:
+#     - users/voldv/ssh/id_ed25519_github.pub
