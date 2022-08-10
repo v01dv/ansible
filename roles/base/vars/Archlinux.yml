@@ -15,6 +15,6 @@ openssh_service: sshd
 #python_virtualenv_package: python-virtualenv
 #rename_package: perl-rename
 #ruby_rake_package: ruby-rake
-#sftp_path: /usr/lib/ssh/sftp-server
+sftp_path: /usr/lib/ssh/sftp-server
 sudo_group: wheel
 #vim_package: gvim
