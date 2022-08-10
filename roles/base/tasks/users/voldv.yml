@@ -61,7 +61,9 @@
   copy:
     src: "{{ item }}"
     dest: /home/voldv/.ssh
-    mode: 0600
+    owner: voldv
+    group: voldv
+    mode: 0644
   with_fileglob:
     - "{{ role_path }}/files/users/voldv/ssh/*.pub"
 
