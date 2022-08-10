@@ -1,0 +1,6 @@
+---
+branch: main
+
+ansible_cron_minute: "*/5"
+ssh_port: 2222
+ssh_users: "voldv user2"
