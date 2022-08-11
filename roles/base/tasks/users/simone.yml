@@ -1,7 +1,7 @@
 - name: create simone user
   user:
     name: simone
-    groups: root
+    system: yes
 
 - name: users | simone | add sudoers file
   tags: settings,simone,sudo,system,users
