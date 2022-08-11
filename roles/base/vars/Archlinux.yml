@@ -2,13 +2,13 @@
 cron_package: cronie
 #dconf_package: dconf
 #dns_utils_package: bind-tools
-#intel_microcode_package: intel-ucode
+intel_microcode_package: intel-ucode
 lm_sensors_package: lm_sensors
   #nfs_client_package: nfs-utils
 openssh_package: openssh
 openssh_service: sshd
 #python_flake8_package: python-pyflakes
-#python_package: python
+python_package: python
 #python_pip_package: python-pip
 #python_psutil_package: python-psutil
 #python_pyflakes_package: python-pyflakes

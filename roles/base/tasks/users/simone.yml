@@ -1,10 +1,7 @@
-- name: users | simone | add public key
-  tags: dotfiles,simone,ssh,ssh-keys,users
-  authorized_key:
-    user: simone
-    key: "{{ item }}"
-  with_file:
-    - users/simone/ssh/id_ed25519_simone.pub
+- name: create simone user
+  user:
+    name: simone
+    groups: root
 
 - name: users | simone | add sudoers file
   tags: settings,simone,sudo,system,users
@@ -14,3 +11,11 @@
     owner: root
     group: root
     mode: 0440
+
+# - name: users | simone | add public key
+#   tags: dotfiles,simone,ssh,ssh-keys,users
+#   authorized_key:
+#     user: simone
+#     key: "{{ item }}"
+#   with_file:
+#     - users/simone/ssh/id_ed25519_simone.pub

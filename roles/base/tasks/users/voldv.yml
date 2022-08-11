@@ -43,8 +43,6 @@
     patterns:  '^id_[^.]*$'
     use_regex: yes
   register: output
-- debug:
-    var: output.files
 
 - name: users | voldv | copy private keys
   tags: dotfiles,voldv,ssh,ssh-keys,users
