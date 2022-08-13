@@ -1,10 +1,10 @@
-#amd_microcode_package: amd-ucode
+amd_microcode_package: amd-ucode
 cron_package: cronie
 #dconf_package: dconf
 #dns_utils_package: bind-tools
 intel_microcode_package: intel-ucode
 lm_sensors_package: lm_sensors
-  #nfs_client_package: nfs-utils
+#nfs_client_package: nfs-utils
 openssh_package: openssh
 openssh_service: sshd
 #python_flake8_package: python-pyflakes

@@ -65,10 +65,10 @@
   with_fileglob:
     - "{{ role_path }}/files/users/voldv/ssh/*.pub"
 
-# - name: users | voldv | add public key
-#   tags: dotfiles,voldv,ssh,ssh-keys,users
-#   authorized_key:
-#     user: voldv
-#     key: "{{ item }}"
-#   with_file:
-#     - users/voldv/ssh/id_ed25519_github.pub
+- name: users | voldv | add public key
+  tags: dotfiles,voldv,ssh,ssh-keys,users
+  authorized_key:
+    user: voldv
+    key: "{{ item }}"
+  with_file:
+    - users/voldv/ssh/id_ed25519.pub

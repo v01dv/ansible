@@ -4,3 +4,8 @@ branch: main
 ansible_cron_minute: "*/5"
 ssh_port: 2222
 ssh_users: "voldv user2"
+
+# platform-specific
+ansible_python_interpreter: /usr/bin/python3
+microcode_amd_install: false
+microcode_intel_install: true
