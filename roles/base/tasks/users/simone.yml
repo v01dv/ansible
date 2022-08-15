@@ -12,10 +12,10 @@
     group: root
     mode: 0440
 
-# - name: users | simone | add public key
-#   tags: dotfiles,simone,ssh,ssh-keys,users
-#   authorized_key:
-#     user: simone
-#     key: "{{ item }}"
-#   with_file:
-#     - users/simone/ssh/id_ed25519_simone.pub
+- name: users | simone | add public key
+  tags: dotfiles,simone,ssh,ssh-keys,users
+  authorized_key:
+    user: simone
+    key: "{{ item }}"
+  with_file:
+    - users/simone/ssh/id_ed25519_simone.pub
