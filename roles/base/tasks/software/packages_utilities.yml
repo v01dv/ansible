@@ -1,0 +1,63 @@
+- name: system setup | utilities | install utility packages
+  tags: packages,system,settings
+  package:
+    state: latest
+    name:
+      - zip
+      - unzip
+      - p7zip
+      - wget
+      - curl 
+      - cifs-utils
+      - higlight
+      - clang
+      - xcape
+      - tmux
+      - fzf
+      - xclip
+      - tldr
+      - ripgrep
+      - fd
+      - vifm
+      - htop
+      - btop
+      - iotop
+      - lsof
+      - ncdu
+      - whois
+
+      # - at
+      # - colordiff
+      # - curl
+      # - "{{ dns_utils_package}}"
+      # - htop
+      # - iotop
+      # - "{{ lm_sensors_package }}"
+      # - lsof
+      # - mc
+      # - mosh
+      # - ncdu
+      # - neofetch
+      # - net-tools
+      # - "{{ nfs_client_package }}"
+      # - nmap
+      # - ranger
+      # - "{{ rename_package }}"
+      # - rsync
+      # - screen
+      # - sshfs
+      # - tmux
+      # - traceroute
+      - "{{ vim_package }}"
+      # - wget
+      # - whois
+      # - zsh
+
+- name: system setup | utilities | install man-pages (arch)
+  tags: packages,system,settings
+  pacman:
+    state: latest
+    name:
+      - man-db
+      - man-pages
+  when: ansible_distribution == "Archlinux"
