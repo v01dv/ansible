@@ -9,7 +9,7 @@
       - wget
       - curl 
       - cifs-utils
-      - higlight
+      - highlight
       - clang
       - xcape
       - tmux
