@@ -22,7 +22,7 @@
   tags: ansible,ansible-setup
   file:
     path: /var/log/ansible.log
-    owner: simone
+    owner: root
     group: root
     mode: 0664
     state: touch

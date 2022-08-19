@@ -2,10 +2,10 @@
 
 # options
 ANSIBLEUSER="simone"
-BRANCH="{{ branch | default('master') }}"
+BRANCH="{{ branch | default('main') }}"
 LOGFILE="/var/log/ansible.log"
 REPO="https://github.com/v01dv/ansible.git"
-VAULT_KEY="/home/simone/.avk"
+VAULT_KEY="$HOME/.avk"
 PRECMD="sudo systemd-inhibit --who='ansible-pull' --why='provisioning'"
 
 # check if ansible-pull is already running, and if not, run it
