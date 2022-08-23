@@ -4,6 +4,7 @@ branch: main
 ansible_cron_minute: "*/5"
 ssh_port: 22
 ssh_users: "voldv user"
+passwd_auth: "yes"
 
 # platform-specific
 ansible_python_interpreter: /usr/bin/python3
