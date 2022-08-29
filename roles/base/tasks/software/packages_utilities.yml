@@ -25,6 +25,7 @@
       - lsof
       - ncdu
       - whois
+      - stow
 
       # - at
       # - colordiff

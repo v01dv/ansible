@@ -1,9 +1,21 @@
-- name: Installing stow
-  pacman: name=stow
+- name: Ensure stow installed 
+  package: 
+    state: present
+    name: stow
   tags:
     - install
     - dotfiles
     - stow
+
+- name: Ensure git installed 
+  package: 
+    state: present
+    name: git
+  tags:
+    - install
+    - dotfiles
+    - stow
+
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'https://github.com/v01dv/.dotfiles.git'
@@ -16,6 +28,7 @@
     - install
     - dotfiles
     - stow
+
 - name: Stow dotfiles
   shell: . arch
   args:

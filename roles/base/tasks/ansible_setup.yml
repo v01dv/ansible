@@ -28,6 +28,12 @@
     state: touch
   changed_when: False
 
+- name: ansible setup | ensure logrotate installed 
+  package: 
+    state: present
+    name: logrotate
+  tags: ansible,ansible-setup,packages
+
 - name: ansible setup | add logrotate config for ansible log file
   tags: ansible-setup
   copy:
