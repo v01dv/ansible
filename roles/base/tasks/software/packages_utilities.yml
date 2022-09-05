@@ -26,6 +26,7 @@
       - ncdu
       - whois
       - stow
+      - logrotate
 
       # - at
       # - colordiff

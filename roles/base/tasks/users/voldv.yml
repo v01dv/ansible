@@ -82,4 +82,24 @@
     - .bash_logout
     - .bash_profile
 
+- name: users | voldv | create config directories
+  tags: dotfiles,voldv,users
+  file:
+    path: /home/voldv/{{ item.dir }}
+    state: directory
+    owner: voldv
+    group: voldv
+    mode: 0700
+  with_items:
+    - { dir: '.local' }
+    - { dir: '.local/share/password-store' }
 
+- name: users | voldv | copy user scripts 
+  tags: dotfiles,voldv,users
+  copy:
+    src: /home/voldv/.dotfiles/bin/.local/bin/
+    dest: /home/voldv/.local/bin/
+    owner: voldv
+    group: voldv
+    mode: 0644
+    directory_mode:
