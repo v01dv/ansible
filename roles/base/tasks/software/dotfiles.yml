@@ -1,22 +1,17 @@
-- name: Ensure stow installed 
+- name: users | ensure stow installed 
+  tags: dotfiles,dotfiles-voldv,stow
   package: 
     state: present
     name: stow
-  tags:
-    - install
-    - dotfiles
-    - stow
 
-- name: Ensure git installed 
+- name: users | ensure git installed 
+  tags: dotfiles,dotfiles-voldv,git
   package: 
     state: present
     name: git
-  tags:
-    - install
-    - dotfiles
-    - stow
 
-- name: Cloning .dotfiles
+- name: users | ensure dotfiles repository is cloned locally
+  tags: dotfiles,dotfiles-voldv
   ansible.builtin.git:
     repo: 'https://github.com/v01dv/.dotfiles.git'
     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
@@ -24,17 +19,13 @@
     update: yes
     accept_hostkey: yes
     version: main
-  tags:
-    - install
-    - dotfiles
-    - stow
 
-- name: Stow dotfiles
-  shell: . arch
-  args:
-    chdir: $HOME/.dotfiles
-    executable: /usr/bin/bash
-  tags:
-    - install
-    - dotfiles
-    - stow
+- name: users | deploy base dotfiles
+  tags: dotfiles,dotfiles-voldv
+  environment:
+    STOW_DIR: "{{ lookup('env', 'HOME') }}/.dotfiles"
+  shell: |
+    stow -D { item }
+    stow { item }
+  changed_when: false
+  with_items: "{{ dotfiles_files }}"

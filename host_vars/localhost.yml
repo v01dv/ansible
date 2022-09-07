@@ -11,6 +11,17 @@ ansible_python_interpreter: /usr/bin/python3
 microcode_amd_install: false
 microcode_intel_install: true
 
+
+dotfiles_repo: "https://github.com/geerlingguy/dotfiles.git"
+dotfiles_repo_version: master
+dotfiles_repo_accept_hostkey: false
+dotfiles_repo_local_destination: "~/Documents/dotfiles"
+dotfiles_files:
+  - shell
+  - readline
+  - tmux
+  - nvim
+
 # app defaults
 # gui_editor: gvim
 # terminal_emulator: terminator
