@@ -10,7 +10,7 @@
 
   ## window manager 
   - include_tasks: window_managers/dwm/dwm.yml
-   when: dwm is defined and dwm == true
+  when: dwm is defined and dwm == true
 
   rescue:
     - set_fact: task_failed=true
