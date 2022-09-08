@@ -29,6 +29,12 @@
   roles:
     - base
 
+- hosts: workstation
+  tags: workstation
+  become: true
+  roles:
+    - workstation
+
   # tasks:  
   #   - include: tasks/ssh.yml
   #   - include: tasks/git-setup.yml    

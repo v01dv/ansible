@@ -17,7 +17,6 @@
   # - import_tasks: software/packages_cleanup.yml
   # - import_tasks: software/packages_pip.yml
   - import_tasks: software/packages_utilities.yml
-  - import_tasks: software/dotfiles.yml
 
   # Perform remaining tasks:
   - import_tasks: system_setup/clock.yml
@@ -29,5 +28,7 @@
   - import_tasks: system_setup/openssh.yml
   # - import_tasks: system_setup/scripts.yml
   
+  - import_tasks: software/dotfiles.yml
+
   rescue:
     - set_fact: task_failed=true

@@ -21,7 +21,7 @@ dotfiles_files:
   - readline
   - tmux
   - nvim
-
+  - x11
 # app defaults
 # gui_editor: gvim
 # terminal_emulator: terminator
@@ -60,3 +60,7 @@ dotfiles_files:
 # desktop environment selection
 # gnome: true
 # mate: false
+
+# window managers selection
+dwm: true
+

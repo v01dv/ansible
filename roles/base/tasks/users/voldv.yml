@@ -73,7 +73,7 @@
   with_file:
     - users/voldv/ssh/id_ed25519.pub
 
-- name: users | voldv | remove preinstalled system files from home directory
+- name: users | voldv | remove preinstalled system files from home directory that will conflict with stow
   file:
     path: /home/voldv/{{ item }}
     state: absent

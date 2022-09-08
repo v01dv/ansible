@@ -1,31 +1,30 @@
-- name: users | ensure stow installed 
+- name: users | ensure stow and git are installed 
   tags: dotfiles,dotfiles-voldv,stow
   package: 
+    name: 
+      - stow
+      - git
     state: present
-    name: stow
 
-- name: users | ensure git installed 
-  tags: dotfiles,dotfiles-voldv,git
-  package: 
-    state: present
-    name: git
-
-- name: users | ensure dotfiles repository is cloned locally
+- name: users | voldv | ensure dotfiles repository is cloned locally
   tags: dotfiles,dotfiles-voldv
+  become_user : voldv
   ansible.builtin.git:
     repo: 'https://github.com/v01dv/.dotfiles.git'
-    dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    dest: "/home/voldv/.dotfiles"
     recursive: yes
     update: yes
     accept_hostkey: yes
     version: main
 
-- name: users | deploy base dotfiles
+- name: users | voldv | deploy base dotfiles
   tags: dotfiles,dotfiles-voldv
+  become_user : voldv
   environment:
-    STOW_DIR: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    STOW_DIR: "/home/voldv/.dotfiles"
   shell: |
-    stow -D { item }
-    stow { item }
-  changed_when: false
+    # stow -D {{ item }}
+    stow {{ item }} --verbose=2 
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'
   with_items: "{{ dotfiles_files }}"
