@@ -9,9 +9,22 @@
     accept_hostkey: yes
     # version: main
 
-- name: dwm | compile dwm from sources
-  tags: dwm
+- name: dwmblocks | clone dwmblocks sources
+  tags: dwm,dwmblocks
   become_user : voldv
+  ansible.builtin.git:
+    repo: 'https://github.com/v01dv/dwmblocks'
+    dest: "/home/voldv/repos/dwmblocks/"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    # version: main
+
+- name: dwm | compile dwm and dwmblocks from sources
+  tags: dwm, dwmblocks
+  loop:
+    - dwm
+    - dwmblocks
   shell: make clean install 
   args:
-    chdir: /home/voldv/repos/dwm
+    chdir: /home/voldv/repos/{{ item }}
