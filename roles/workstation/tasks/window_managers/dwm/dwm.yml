@@ -1,11 +1,17 @@
-- name: users | voldv | clone dwm sources
-  tags: dotfiles,dotfiles-voldv
+- name: dwm | clone dwm sources
+  tags: dwm
   become_user : voldv
   ansible.builtin.git:
     repo: 'git://git.suckless.org/dwm'
-    dest: "/home/voldv/repos/"
+    dest: "/home/voldv/repos/dwm/"
     recursive: yes
     update: yes
     accept_hostkey: yes
-    version: main
+    # version: main
 
+- name: dwm | compile dwm from sources
+  tags: dwm
+  become_user : voldv
+  shell: make clean install 
+  args:
+    chdir: /home/voldv/repos/dwm
